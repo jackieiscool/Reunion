@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+%html{"ng-app"=>"ReunionApp"}
+  %head
+    %title 
+      Patrick Henry 05 Reunion
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+  %body
+    .main
+      .page-header
+        .row
+          .col-md-3
+            <img src="http://henry.mpls.k12.mn.us/uploads/phhs.jpg" class='img img-responsive' alt="PHHS logo" height="50%" width="50%"/>
+          .col-md-6
+            %h2.school_name Patrick Henry High School
+            %h1.reunion Class of '05 Reunion
+
+      .container-fluid
+        <ng-view></ng-view>
+
