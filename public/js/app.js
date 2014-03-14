@@ -1,7 +1,7 @@
 angular.module('ReunionApp', [
   'ngRoute',
-  'ReunionApp.controllers',
   'ReunionApp.services',
+  'ReunionApp.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.
@@ -11,12 +11,34 @@ config(['$routeProvider', function($routeProvider) {
 
 angular.module('ReunionApp.controllers', []).
   controller('planningController', function($scope, categoriesAPIservice) {
-    $scope.categoriesList = [];
 
+    $scope.categoriesList = [];
     categoriesAPIservice.getCategories().success(function (response) {
-        //Dig into the responde to get the relevant data
-        $scope.categoriesList = response;
+      $scope.categoriesList = response;
     });
+  }).
+  controller('formController', function($scope, $http) {
+
+    var defaultForm = {
+      name : ""
+    };
+
+    $scope.formData = {};
+
+    $scope.processForm = function(newCategory) {
+      $scope.formData["name"] = newCategory.name
+      $http({
+        method: 'POST',
+        url: 'http://localhost:4567/create_category',
+        params: $scope.formData
+      }).
+      success(function(data) {
+        console.log(data);
+        $scope.categoryForm.$setPristine();
+        $scope.newCategory = defaultForm;
+        $scope.categoriesList.push(data);
+      });
+    }
   });
 
 angular.module('ReunionApp.services', []).
@@ -24,12 +46,13 @@ angular.module('ReunionApp.services', []).
 
     var categories = {};
 
-    categoriesAPI.getCategories = function() {
+    categories.getCategories = function() {
+
       return $http({
         method: 'GET', 
         url: "http://localhost:4567/categories.json"
       });
     }
-
     return categories;
   });
+

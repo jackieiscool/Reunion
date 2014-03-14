@@ -1,0 +1,14 @@
+<h1>Planning page</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-4">
+    <form ng-controller="formController" role="form" class="form-inline" name="categoryForm">
+      New Category: <input type="text" name="name" class="text" ng-model="newCategory.name"/>
+      <button ng-click="processForm(newCategory)" type="submit" >Submit</button>
+    </form>
+  </div>
+</div>
+
+<div ng-repeat="category in categoriesList">
+  {{ category.name }}
+</div>
