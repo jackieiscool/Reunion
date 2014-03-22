@@ -9,6 +9,8 @@
   </div>
 </div>
 
-<div ng-repeat="category in categoriesList">
-  {{ category.name }}
+<div class="row" ng-repeat="category in categoriesList">
+  <div class="col-md-3 col-md-offset-4">
+    <h3 class="category_box">{{ category.name }}</h3>
+  </div>
 </div>

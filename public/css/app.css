@@ -6,3 +6,15 @@
   font-family: "Brush Script MT", cursive;
   text-align: center;
 }
+
+.category_box {
+  background-color: #FFFFFF;
+  border-width: 2px;
+  border-color: #000000;
+  border-style: solid;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+}
